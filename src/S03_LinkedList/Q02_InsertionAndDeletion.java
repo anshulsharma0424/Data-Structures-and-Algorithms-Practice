@@ -50,12 +50,7 @@ public class Q02_InsertionAndDeletion {
     public static Node insertAtPosition(Node head, int position, int data) {
         Node newNode = new Node(data);
 
-        // Case 1: Insert at head (position 0)
-        if (position == 0) {
-            newNode.next = head;
-            head = newNode;
-            return head;
-        }
+        if (position == 0) return insertAtBeginning(head, data);
 
         Node current = head;
         int count = 0;
