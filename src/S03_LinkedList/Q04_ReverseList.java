@@ -4,7 +4,7 @@ import static S03_LinkedList.Q01_Introduction.createLinkedList;
 import static S03_LinkedList.Q01_Introduction.printList;
 
 public class Q04_ReverseList {
-    // iterative way of reverse a linked list
+    // Iterative way of reverse a linked list
     public static Node reverseList(Node head) {
         Node prev = null;
         Node temp = head;
