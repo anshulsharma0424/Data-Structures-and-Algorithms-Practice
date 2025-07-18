@@ -43,7 +43,7 @@ public class Q03_FunctionalRecursion {
         reverseArray(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
         reverseArray(0, arr, arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr)); // print
         String str = "MADAM";
         System.out.println(isPalindrome(str, 0, str.length()-1));
     }
