@@ -27,10 +27,28 @@ public class Q05_RecursionOnSubSequences {
         printAllSubSequencesWhoseSumEqualsK(idx+1, arr, n, list, sum, k);
     }
 
+    public static boolean printOneSubSequenceWithSumEqualsK(int idx, int[] arr, int n, ArrayList<Integer> list, int sum, int k) {
+        if (idx >= n) {
+            if (sum == k) {
+                System.out.println(list);
+                return true;
+            }
+            return false;
+        }
+
+        list.add(arr[idx]);
+        if (printOneSubSequenceWithSumEqualsK(idx+1, arr, n, list, sum + arr[idx], k)) return true;
+        list.removeLast();
+        if (printOneSubSequenceWithSumEqualsK(idx+1, arr, n, list, sum, k)) return true;
+
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] arr = {1,2,1};
         ArrayList<Integer> list = new ArrayList<>();
         printAllSubSequences(0, arr, arr.length, list);
         printAllSubSequencesWhoseSumEqualsK(0, arr, arr.length, list, 0, 1);
+        printOneSubSequenceWithSumEqualsK(0, arr, arr.length, list, 0, 2);
     }
 }
