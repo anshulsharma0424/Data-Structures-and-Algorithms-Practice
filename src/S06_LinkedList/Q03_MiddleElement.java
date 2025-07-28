@@ -1,4 +1,4 @@
-package S03_LinkedList;
+package S06_LinkedList;
 
 public class Q03_MiddleElement {
 

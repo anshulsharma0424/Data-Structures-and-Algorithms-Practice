@@ -1,4 +1,4 @@
-package S02_BinarySearch;
+package S05_BinarySearch;
 
 public class Q04_FloorCeilValues {
 

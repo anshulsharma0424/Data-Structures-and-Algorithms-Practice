@@ -1,7 +1,7 @@
-package S03_LinkedList;
+package S06_LinkedList;
 
-import static S03_LinkedList.Q01_Introduction.createLinkedList;
-import static S03_LinkedList.Q01_Introduction.printList;
+import static S06_LinkedList.Q01_Introduction.createLinkedList;
+import static S06_LinkedList.Q01_Introduction.printList;
 
 public class Q04_ReverseList {
     // Iterative way of reverse a linked list
