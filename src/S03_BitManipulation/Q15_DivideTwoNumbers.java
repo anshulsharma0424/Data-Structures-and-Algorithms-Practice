@@ -8,8 +8,7 @@ public class Q15_DivideTwoNumbers {
         if (a == Integer.MIN_VALUE && b == -1)
             return Integer.MAX_VALUE;
 
-        // The sign will be negative only if sign of
-        // divisor and dividend are different
+        // The sign will be negative only if sign of divisor and dividend are different
         int sign = ((a < 0) ^ (b < 0)) ? -1 : 1;
 
         // remove sign of operands
