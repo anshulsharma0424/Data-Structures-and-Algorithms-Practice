@@ -32,5 +32,6 @@ public class Q15_DivideTwoNumbers {
 
     public static void main(String[] args) {
         System.out.println(divide(48, -8));
+        System.out.println(divide(69, -3));
     }
 }
