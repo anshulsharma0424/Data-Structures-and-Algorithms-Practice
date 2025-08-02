@@ -5,8 +5,7 @@ public class Q15_DivideTwoNumbers {
     static long divide(long a, long b) {
 
         // Handle overflow
-        if (a == Integer.MIN_VALUE && b == -1)
-            return Integer.MAX_VALUE;
+        if (a == Integer.MIN_VALUE && b == -1) return Integer.MAX_VALUE;
 
         // The sign will be negative only if sign of divisor and dividend are different
         int sign = ((a < 0) ^ (b < 0)) ? -1 : 1;
