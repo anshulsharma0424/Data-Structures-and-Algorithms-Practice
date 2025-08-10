@@ -1,4 +1,4 @@
-package S07_Recursion;
+package S08_Recursion;
 
 public class Q02_Parameterized_and_FunctionalRecursion {
     // Print 'sum' from 1 to N (Parameterized recursion)

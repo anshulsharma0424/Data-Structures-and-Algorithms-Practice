@@ -1,4 +1,4 @@
-package S08_Strings;
+package S09_Strings;
 
 public class Q01_PalindromeCheck {
 

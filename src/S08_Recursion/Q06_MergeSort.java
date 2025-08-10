@@ -1,4 +1,4 @@
-package S07_Recursion;
+package S08_Recursion;
 
 public class Q06_MergeSort {
     // Main function to sort an array using merge sort
