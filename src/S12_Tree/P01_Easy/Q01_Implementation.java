@@ -101,7 +101,9 @@ public class Q01_Implementation {
 
         System.out.println("Height: " + heightOfTree(root));
 
-        System.out.print("LevelOrder: ");
+        System.out.print("LevelOrder N*(logN): ");
         leverOrder(root);
+
+        System.out.println("LevelOrder Optimized: ");
     }
 }
