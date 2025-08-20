@@ -26,6 +26,24 @@ public class Q01_Implementation {
         System.out.print(root.val + " ");
     }
 
+    public static int heightOfTree(Node root) {
+        if (root == null || (root.left == null && root.right == null)) return 0;
+        return Math.max(heightOfTree(root.left), heightOfTree(root.right)) + 1;
+    }
+
+    public static void printNthLevel(Node root, int n){
+        if (root == null) return;
+
+        if (n == 1) System.out.print(root.val + " ");
+        printNthLevel(root.left, n-1);
+        printNthLevel(root.right, n-1);
+    }
+
+    public static void leverOrder(Node root){
+        int level = heightOfTree(root) + 1;
+        for (int i=1; i<=level; i++) printNthLevel(root, i);
+    }
+
     public static int sizeOfBinaryTree(Node root) {
         if (root == null) return 0;
         return 1 + sizeOfBinaryTree(root.left) + sizeOfBinaryTree(root.right);
@@ -38,14 +56,12 @@ public class Q01_Implementation {
 
     public static int maximumNode(Node root) {
         if (root == null) return Integer.MIN_VALUE;
-
-        // int a = root.val;
-        // int b = maximumNode(root.left);
-        // int c = maximumNode(root.right);
-
-        // return Math.max(a, Math.max(b,c));
-
         return Math.max(root.val, Math.max(maximumNode(root.left), maximumNode(root.right)));
+    }
+
+    public static int minimumNode(Node root) {
+        if (root == null) return Integer.MAX_VALUE;
+        return Math.min(root.val, Math.min(minimumNode(root.left), minimumNode(root.right)));
     }
 
     public static void main(String[] args) {
@@ -56,21 +72,36 @@ public class Q01_Implementation {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
+//        root.right.left.left = new Node(8);
+//        root.right.left.left.left = new Node(18);
 
+        System.out.print("PreOrder: ");
         preOrder(root);
         System.out.println();
 
+        System.out.print("PostOrder: ");
         inOrder(root);
         System.out.println();
 
+        System.out.print("InOrder: ");
         postOrder(root);
         System.out.println();
 
-        System.out.println(sizeOfBinaryTree(root));
+        System.out.println("Size: " + sizeOfBinaryTree(root));
 
-        System.out.println(sumOfTreeNodes(root));
+        System.out.println("Sum of all nodes: " + sumOfTreeNodes(root));
 
-        System.out.println(maximumNode(root));
+        System.out.println("Maximum node: " + maximumNode(root));
 
+        System.out.println("Minimum node: " + minimumNode(root));
+
+        System.out.print("Nth Level (3rd right now):  ");
+        printNthLevel(root, 3);
+        System.out.println();
+
+        System.out.println("Height: " + heightOfTree(root));
+
+        System.out.print("LevelOrder: ");
+        leverOrder(root);
     }
 }
