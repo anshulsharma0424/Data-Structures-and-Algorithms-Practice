@@ -26,6 +26,28 @@ public class Q01_Implementation {
         System.out.print(root.val + " ");
     }
 
+    public static int sizeOfBinaryTree(Node root) {
+        if (root == null) return 0;
+        return 1 + sizeOfBinaryTree(root.left) + sizeOfBinaryTree(root.right);
+    }
+
+    public static int sumOfTreeNodes(Node  root) {
+        if (root == null) return 0;
+        return root.val + sumOfTreeNodes(root.left) + sumOfTreeNodes(root.right);
+    }
+
+    public static int maximumNode(Node root) {
+        if (root == null) return Integer.MIN_VALUE;
+
+        // int a = root.val;
+        // int b = maximumNode(root.left);
+        // int c = maximumNode(root.right);
+
+        // return Math.max(a, Math.max(b,c));
+
+        return Math.max(root.val, Math.max(maximumNode(root.left), maximumNode(root.right)));
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -43,5 +65,12 @@ public class Q01_Implementation {
 
         postOrder(root);
         System.out.println();
+
+        System.out.println(sizeOfBinaryTree(root));
+
+        System.out.println(sumOfTreeNodes(root));
+
+        System.out.println(maximumNode(root));
+
     }
 }
