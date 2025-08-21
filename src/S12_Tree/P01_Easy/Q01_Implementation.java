@@ -1,5 +1,10 @@
 package S12_Tree.P01_Easy;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Q01_Implementation {
 
     public static void inOrder(Node root) {
@@ -34,7 +39,10 @@ public class Q01_Implementation {
     public static void printNthLevel(Node root, int n){
         if (root == null) return;
 
-        if (n == 1) System.out.print(root.val + " ");
+        if (n == 1) {
+            System.out.print(root.val + " ");
+            return;
+        }
         printNthLevel(root.left, n-1);
         printNthLevel(root.right, n-1);
     }
@@ -42,6 +50,19 @@ public class Q01_Implementation {
     public static void leverOrder(Node root){
         int level = heightOfTree(root) + 1;
         for (int i=1; i<=level; i++) printNthLevel(root, i);
+    }
+
+    public static void levelOrderUsingQueue(Node root){
+        Queue<Node> q = new LinkedList<>();
+        if (root != null) q.add(root);
+
+        while (q.size() > 0){
+            Node temp = q.peek();
+            if (temp.left != null) q.add(temp.left);
+            if (temp.right != null) q.add(temp.right);
+            System.out.print(temp.val + " ");
+            q.remove();
+        }
     }
 
     public static int sizeOfBinaryTree(Node root) {
@@ -101,9 +122,12 @@ public class Q01_Implementation {
 
         System.out.println("Height: " + heightOfTree(root));
 
-        System.out.print("LevelOrder N*(logN): ");
+        System.out.print("LevelOrder N*(logN) - Recursive way: ");
         leverOrder(root);
+        System.out.println();
 
-        System.out.println("LevelOrder Optimized: ");
+        System.out.print("LevelOrder Optimized (using queue / Iterative way - O(N): ");
+        levelOrderUsingQueue(root);
+
     }
 }
