@@ -1,7 +1,4 @@
 package S12_Tree.P01_Easy;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -85,6 +82,41 @@ public class Q01_Implementation {
         return Math.min(root.val, Math.min(minimumNode(root.left), minimumNode(root.right)));
     }
 
+    public static int diameterOfBinaryTree(Node root){
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 0;
+
+        int left = diameterOfBinaryTree(root.left);
+        int right = diameterOfBinaryTree(root.right);
+        int mid = heightOfTree(root.left) + heightOfTree(root.right);
+        if (root.left != null) mid++;
+        if (root.right != null) mid++;
+
+        return Math.max(mid, Math.max(left, right));
+    }
+
+    public static boolean isBalancedBinaryTree(Node root) {
+        if (root == null) return true;
+
+        int lh = heightOfTree(root.left);
+        if (root.left != null) lh++;
+
+        int rh = heightOfTree(root.right);
+        if (root.right != null) rh++;
+
+        int difference = Math.abs(lh-rh);
+        if (difference > 1) return false;
+
+        return (isBalancedBinaryTree(root.left) && isBalancedBinaryTree(root.right));
+    }
+
+    public static boolean areSameBinaryTrees(Node root1, Node root2) {
+        if (root1 == null && root2 == null) return true;
+        if (root1 == null || root2 == null) return false;
+        if (root1.val != root2.val) return false;
+        return (areSameBinaryTrees(root1.left, root2.left) && areSameBinaryTrees(root1.right, root2.right));
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -95,6 +127,17 @@ public class Q01_Implementation {
         root.right.right = new Node(7);
 //        root.right.left.left = new Node(8);
 //        root.right.left.left.left = new Node(18);
+
+        // New Binary Trees
+        // Tree-1
+        Node newRoot = new Node(1);
+        newRoot.left = new Node(2);
+        newRoot.right = new Node(3);
+        // Tree-2
+        Node newRoot2 = new Node(1);
+        newRoot2.left = new Node(2);
+        newRoot2.right = new Node(3);
+
 
         System.out.print("PreOrder: ");
         preOrder(root);
@@ -128,6 +171,12 @@ public class Q01_Implementation {
 
         System.out.print("LevelOrder Optimized (using queue / Iterative way - O(N): ");
         levelOrderUsingQueue(root);
+        System.out.println();
 
+        System.out.println("Diameter of BinaryTree: " + diameterOfBinaryTree(root));
+
+        System.out.println("Balanced BinaryTree: " + isBalancedBinaryTree(root));
+
+        System.out.println("Are same Binary trees: " + areSameBinaryTrees(newRoot, newRoot2));
     }
 }
