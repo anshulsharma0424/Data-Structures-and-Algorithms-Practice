@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Q01_Implementation {
 
-    static class Edge{
+    public static class Edge{
         int src;
         int dest;
 
@@ -14,7 +14,7 @@ public class Q01_Implementation {
         }
     }
 
-    static class WeightedEdge{
+    public static class WeightedEdge{
         int src;
         int dest;
         int wt;
@@ -27,9 +27,9 @@ public class Q01_Implementation {
     }
 
     // Create graph
-    public static void createGraph(ArrayList<Edge> graph[]){
+    public static void createGraph(ArrayList<Edge>[] graph){
         for (int i=0; i<graph.length; i++){
-            graph[i] = new ArrayList<Edge>(); // Creates an empty ArrayList on every index of "graph[]" array
+            graph[i] = new ArrayList<>(); // Creates an empty ArrayList on every index of "graph[]" array
         }
 
         graph[0].add(new Edge(0,2));
@@ -47,9 +47,9 @@ public class Q01_Implementation {
     }
 
     // Create weighted graph
-    public static void createWeightedGraph(ArrayList<WeightedEdge> graph[]){
+    public static void createWeightedGraph(ArrayList<WeightedEdge>[] graph){
         for (int i=0; i<graph.length; i++){
-            graph[i] = new ArrayList<WeightedEdge>(); // Creates an empty ArrayList on every index of "graph[]" array
+            graph[i] = new ArrayList<>(); // Creates an empty ArrayList on every index of "graph[]" array
         }
 
         graph[0].add(new WeightedEdge(0,2, 2));
@@ -68,7 +68,7 @@ public class Q01_Implementation {
 
     public static void main(String[] args) {
         int V = 4;
-        ArrayList<Edge> graph[] = new ArrayList[V];
+        ArrayList<Edge>[] graph = new ArrayList[V];
 
         createGraph(graph);
 
@@ -80,7 +80,7 @@ public class Q01_Implementation {
         System.out.println();
 
 
-        ArrayList<WeightedEdge> newGraph[] = new ArrayList[V];
+        ArrayList<WeightedEdge>[] newGraph = new ArrayList[V];
 
         createWeightedGraph(newGraph);
 
